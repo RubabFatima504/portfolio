@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rubab Fatima — Flutter Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0A;
+    --bg-soft:#121212;
+    --card:#161616;
+    --line: rgba(255,255,255,0.08);
+    --lime:#D7FF3D;
+    --lime-dim: rgba(215,255,61,0.12);
+    --text:#F2F2F0;
+    --text-dim:#9A9A95;
+    --display:'Space Grotesk', sans-serif;
+    --body:'Inter', sans-serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(10,10,10,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:72px;}
+  .logo{font-family:var(--display);font-weight:700;font-size:21px;}
+  .logo span{color:var(--lime);}
+  .navlinks{display:flex;gap:26px;font-size:14px;font-weight:500;}
+  .navlinks a{color:var(--text-dim);transition:color .2s;}
+  .navlinks a:hover{color:var(--text);}
+  .btn-pill{
+    font-family:var(--body);font-weight:600;font-size:14px;
+    background:var(--lime);color:#0A0A0A;
+    padding:11px 22px;border-radius:30px;
+    transition:transform .15s ease;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-pill:hover{transform:translateY(-2px);}
+
+  header.hero{padding:90px 0 70px;}
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--lime);margin-bottom:20px;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:'';width:7px;height:7px;background:var(--lime);border-radius:50%;}
+  h1.title{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(42px,7vw,72px);line-height:1.04;letter-spacing:-0.01em;
+  }
+  h1.title .accent{color:var(--lime);}
+  .subtitle{
+    margin-top:24px;font-family:var(--display);font-weight:500;
+    font-size:clamp(18px,2.4vw,24px);color:var(--text-dim);max-width:620px;
+  }
+  .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-outline{
+    font-weight:600;font-size:14px;padding:11px 22px;border-radius:30px;
+    border:1px solid var(--line);color:var(--text);
+  }
+  .btn-outline:hover{border-color:var(--lime);color:var(--lime);}
+  .stats-row{display:flex;gap:46px;margin-top:60px;flex-wrap:wrap;}
+  .stat{}
+  .stat .num{font-family:var(--display);font-size:34px;font-weight:700;color:var(--lime);}
+  .stat .lbl{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-top:4px;}
+
+  section{padding:90px 0;border-top:1px solid var(--line);}
+  .section-label{
+    font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--lime);margin-bottom:14px;
+  }
+  h2.section-title{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.5vw,42px);margin-bottom:38px;}
+  h2.section-title .accent{color:var(--lime);}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:start;}
+  .about-text p{font-size:16px;color:#CFCFC9;margin-bottom:16px;max-width:540px;}
+  .about-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;}
+  .about-card + .about-card{margin-top:14px;}
+  .about-card h4{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--lime);margin-bottom:8px;}
+  .about-card p{font-size:14px;color:var(--text-dim);}
+
+  /* TIMELINE / ROLES */
+  .timeline{position:relative;padding-left:28px;border-left:1px solid var(--line);}
+  .role{position:relative;padding-bottom:42px;}
+  .role:last-child{padding-bottom:0;}
+  .role::before{
+    content:'';position:absolute;left:-34px;top:4px;width:11px;height:11px;
+    border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px var(--bg-soft);
+  }
+  .role-date{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-bottom:6px;}
+  .role-title{font-family:var(--display);font-weight:700;font-size:22px;}
+  .role-org{color:var(--lime);font-weight:600;font-size:15px;margin-top:2px;}
+  .role-desc{color:var(--text-dim);font-size:14px;margin-top:8px;max-width:520px;}
+
+  /* TECH STACK */
+  .stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .stack-card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:24px 16px;text-align:center;transition:border-color .2s, transform .2s;
+  }
+  .stack-card:hover{border-color:var(--lime);transform:translateY(-3px);}
+  .stack-icon{font-family:var(--display);font-size:26px;font-weight:700;color:var(--lime);margin-bottom:10px;}
+  .stack-name{font-size:13px;font-weight:600;}
+
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .proj-card{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:30px 26px;display:block;transition:transform .2s ease, border-color .2s ease;
+    position:relative;overflow:hidden;
+  }
+  .proj-card:hover{transform:translateY(-6px);border-color:var(--lime);}
+  .proj-card::after{
+    content:'↗';position:absolute;top:24px;right:24px;font-size:18px;color:var(--text-dim);
+    transition:color .2s;
+  }
+  .proj-card:hover::after{color:var(--lime);}
+  .proj-tag{font-family:var(--mono);font-size:11px;color:var(--lime);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;}
+  .proj-card h4{font-family:var(--display);font-weight:700;font-size:22px;margin-bottom:10px;}
+  .proj-card p{font-size:14px;color:var(--text-dim);margin-bottom:16px;}
+  .proj-tags{display:flex;gap:6px;flex-wrap:wrap;}
+  .proj-tags span{font-family:var(--mono);font-size:11px;color:#CFCFC9;background:rgba(255,255,255,0.06);padding:4px 9px;border-radius:14px;}
+
+  /* CONTACT */
+  footer{padding:90px 0 60px;text-align:center;}
+  footer .section-label{justify-content:center;display:flex;}
+  footer h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,6vw,52px);margin-bottom:18px;}
+  footer p{color:var(--text-dim);margin-bottom:34px;}
+  .contact-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .icon-btn{
+    width:52px;height:52px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:20px;
+    transition:border-color .2s, color .2s, transform .2s;
+  }
+  .icon-btn:hover{border-color:var(--lime);color:var(--lime);transform:translateY(-3px);}
+  .foot-note{margin-top:60px;font-family:var(--mono);font-size:12px;color:var(--text-dim);}
+
+  @media (max-width:760px){
+    .about-grid{grid-template-columns:1fr;}
+    .stack-grid{grid-template-columns:repeat(2,1fr);}
+    .projects-grid{
+      grid-template-columns:none;
+      display:flex;
+      overflow-x:auto;
+      gap:16px;
+      padding-bottom:8px;
+      -webkit-overflow-scrolling:touch;
+      scroll-snap-type:x mandatory;
+    }
+    .proj-card{
+      flex:0 0 78%;
+      scroll-snap-align:start;
+    }
+    .navlinks{display:none;}
+    .stats-row{gap:30px;}
+  }
+
+  [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  [data-reveal].in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Rubab <span>Fatima</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#stack">Stack</a>
+      <a href="#projects">Projects</a>
+    </div>
+    <a href="#contact" class="btn-pill">Get in Touch</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Open to Flutter Roles</div>
+    <h1 class="title">I build Flutter apps<br>that solve <span class="accent">real problems.</span></h1>
+    <p class="subtitle">CS graduate turning ideas — from accessible learning tools to clean business UIs — into apps that work the way they're supposed to.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-pill">View Projects →</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="num">3+</div><div class="lbl">FLUTTER PROJECTS</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">INTERNSHIPS</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">LANGUAGES SUPPORTED (EN/UR)</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-label">// About Me</div>
+    <h2 class="section-title">From classroom to <span class="accent">codebase.</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a recent Computer Science graduate from Fatima Jinnah Women University, Rawalpindi, with a focus that's always leaned toward mobile — specifically Flutter. I like the kind of problems that don't have a clean textbook answer: ones that need real thought around usability, accessibility, and how an app actually feels in someone's hands, not just how it looks in a demo.</p>
+        <p>I've since picked up internship experience across Flutter development and data analysis, and I'm currently looking for the next role where I can keep building things that are actually used, not just demoed.</p>
+      </div>
+      <div>
+        <div class="about-card"><h4>Based In</h4><p>Rawalpindi, Pakistan</p></div>
+        <div class="about-card"><h4>Focus</h4><p>Flutter & Mobile App Development</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="wrap">
+    <div class="section-label">// Resume</div>
+    <h2 class="section-title">Roles & <span class="accent">Experience</span></h2>
+    <div class="timeline">
+      <div class="role" data-reveal>
+        <div class="role-date">SEP 2025 — DEC 2025</div>
+        <div class="role-title">Flutter Development Internship</div>
+        <div class="role-org">NerdFlow</div>
+        <div class="role-desc">Worked on mobile app features and UI implementation using Flutter.</div>
+      </div>
+      <div class="role" data-reveal>
+        <div class="role-date">JUL 2025 — AUG 2025</div>
+        <div class="role-title">Data Analysis Internship</div>
+        <div class="role-org">ITSolera</div>
+        <div class="role-desc">Worked on data analysis tasks, building familiarity with structured data workflows.</div>
+      </div>
+      <div class="role" data-reveal>
+        <div class="role-date">JUL 2025 — AUG 2025</div>
+        <div class="role-title">Flutter Development Internship</div>
+        <div class="role-org">The Nixus</div>
+        <div class="role-desc">Built and contributed to Flutter mobile app features during the internship period.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="section-label">// Tech Stack</div>
+    <h2 class="section-title">Tools I <span class="accent">work with.</span></h2>
+    <div class="stack-grid">
+      <div class="stack-card"><div class="stack-icon">Fl</div><div class="stack-name">Flutter</div></div>
+      <div class="stack-card"><div class="stack-icon">🔥</div><div class="stack-name">Firebase</div></div>
+      <div class="stack-card"><div class="stack-icon">JS</div><div class="stack-name">Node.js</div></div>
+      <div class="stack-card"><div class="stack-icon">⛁</div><div class="stack-name">PostgreSQL</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-label">// Portfolio</div>
+    <h2 class="section-title">Things I've <span class="accent">built.</span></h2>
+    <div class="projects-grid">
+
+      <a href="https://github.com/RubabFatima504/HopeLearn-App" target="_blank" class="proj-card" data-reveal>
+        <div class="proj-tag">Flagship Project</div>
+        <h4>HopeLearn</h4>
+        <p>Bilingual (EN/UR) AI-assisted learning app for children with Intellectual Developmental Delays — dashboards, Flame-engine games, and a Decision-Making module.</p>
+        <div class="proj-tags"><span>Flutter</span><span>Flame</span><span>Firebase</span></div>
+      </a>
+
+      <a href="https://github.com/RubabFatima504/BuiltMemoryGame" target="_blank" class="proj-card" data-reveal>
+        <div class="proj-tag">Game</div>
+        <h4>Remember Pattern</h4>
+        <p>A memory-matching mini-game built on the Flutter Flame engine — pattern sequencing logic and level-based scoring.</p>
+        <div class="proj-tags"><span>Flutter</span><span>Flame Engine</span></div>
+      </a>
+
+      <a href="https://github.com/RubabFatima504/NumberLearningGame" target="_blank" class="proj-card" data-reveal>
+        <div class="proj-tag">Game</div>
+        <h4>Number Learning Game</h4>
+        <p>A number-learning game on the Flame engine with drag-and-drop interactions and progressive difficulty levels.</p>
+        <div class="proj-tags"><span>Flutter</span><span>Flame Engine</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="section-label">// Contact</div>
+    <h2>Let's build <span class="accent" style="color:var(--lime);">something.</span></h2>
+    <p>Open to Discussion</p>
+    <div class="contact-row">
+      <a href="https://github.com/RubabFatima504" target="_blank" class="icon-btn" title="GitHub">⌥</a>
+      <a href="https://www.linkedin.com/in/rubab-fatima2005/" target="_blank" class="icon-btn" title="LinkedIn">in</a>
+      <a href="https://wa.me/923038194005" target="_blank" class="icon-btn" title="WhatsApp">☏</a>
+    </div>
+    <div class="foot-note">+92 303 8194005 · rubabfatiam01@gmail.com</div>
+    <div class="foot-note" style="margin-top:8px;">Rawalpindi, Pakistan · © 2026 Rubab Fatima</div>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('[data-reveal]');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:0.15});
+  els.forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
