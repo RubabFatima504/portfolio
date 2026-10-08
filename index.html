@@ -3,401 +3,258 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RubabFatima - Portfolio</title>
+<title>Rubab Fatima — Flutter & AI/ML Developer</title>
+<meta name="description" content="Rubab Fatima: CS graduate building Flutter apps and AI/ML tools. HopeLearn, HarvestGuard, Crop Disease Detection and more.">
+<meta property="og:title" content="Rubab Fatima — Flutter & AI/ML Developer">
+<meta property="og:description" content="Flutter apps and AI/ML tools that solve real problems.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/og.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230A0A0A'/><text x='50' y='68' font-size='56' font-weight='700' text-anchor='middle' fill='%23D7FF3D' font-family='sans-serif'>RF</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0A0A0A;
-    --bg-soft:#121212;
-    --card:#161616;
-    --line: rgba(255,255,255,0.08);
-    --lime:#D7FF3D;
-    --lime-dim: rgba(215,255,61,0.12);
-    --text:#F2F2F0;
-    --text-dim:#9A9A95;
-    --display:'Space Grotesk', sans-serif;
-    --body:'Inter', sans-serif;
-    --mono:'JetBrains Mono', monospace;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden;}
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
-
-  nav{position:sticky;top:0;z-index:50;background:rgba(10,10,10,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
-  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:72px;}
-  .logo{font-family:var(--display);font-weight:700;font-size:21px;}
-  .logo span{color:var(--lime);}
-  .navlinks{display:flex;gap:26px;font-size:14px;font-weight:500;}
-  .navlinks a{color:var(--text-dim);transition:color .2s;}
-  .navlinks a:hover{color:var(--text);}
-  .btn-pill{
-    font-family:var(--body);font-weight:600;font-size:14px;
-    background:var(--lime);color:#0A0A0A;
-    padding:11px 22px;border-radius:30px;
-    transition:transform .15s ease;
-    display:inline-flex;align-items:center;gap:8px;
-  }
-  .btn-pill:hover{transform:translateY(-2px);}
-
-  header.hero{padding:90px 0 70px;}
-  .eyebrow{
-    font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--lime);margin-bottom:20px;display:flex;align-items:center;gap:10px;
-  }
-  .eyebrow::before{content:'';width:7px;height:7px;background:var(--lime);border-radius:50%;}
-  h1.title{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(42px,7vw,72px);line-height:1.04;letter-spacing:-0.01em;
-  }
-  h1.title .accent{color:var(--lime);}
-  .subtitle{
-    margin-top:24px;font-family:var(--display);font-weight:500;
-    font-size:clamp(18px,2.4vw,24px);color:var(--text-dim);max-width:620px;
-  }
-  .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;}
-  .btn-outline{
-    font-weight:600;font-size:14px;padding:11px 22px;border-radius:30px;
-    border:1px solid var(--line);color:var(--text);
-  }
-  .btn-outline:hover{border-color:var(--lime);color:var(--lime);}
-  .stats-row{display:flex;gap:46px;margin-top:60px;flex-wrap:wrap;}
-  .stat{}
-  .stat .num{font-family:var(--display);font-size:34px;font-weight:700;color:var(--lime);}
-  .stat .lbl{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-top:4px;}
-
-  section{padding:90px 0;border-top:1px solid var(--line);}
-  .section-label{
-    font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--lime);margin-bottom:14px;
-  }
-  h2.section-title{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.5vw,42px);margin-bottom:38px;}
-  h2.section-title .accent{color:var(--lime);}
-
-  /* ABOUT */
-  .about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:start;}
-  .about-text p{font-size:16px;color:#CFCFC9;margin-bottom:16px;max-width:540px;}
-  .about-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;}
-  .about-card + .about-card{margin-top:14px;}
-  .about-card h4{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--lime);margin-bottom:8px;}
-  .about-card p{font-size:14px;color:var(--text-dim);}
-
-  /* TIMELINE / ROLES */
-  .timeline{position:relative;padding-left:28px;border-left:1px solid var(--line);}
-  .role{position:relative;padding-bottom:42px;}
-  .role:last-child{padding-bottom:0;}
-  .role::before{
-    content:'';position:absolute;left:-34px;top:4px;width:11px;height:11px;
-    border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px var(--bg-soft);
-  }
-  .role-date{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-bottom:6px;}
-  .role-title{font-family:var(--display);font-weight:700;font-size:22px;}
-  .role-org{color:var(--lime);font-weight:600;font-size:15px;margin-top:2px;}
-  .role-desc{color:var(--text-dim);font-size:14px;margin-top:8px;max-width:520px;}
-
-  /* TECH STACK */
-  .stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-  .stack-card{
-    background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:24px 16px;text-align:center;transition:border-color .2s, transform .2s;
-  }
-  .stack-card:hover{border-color:var(--lime);transform:translateY(-3px);}
-  .stack-icon{font-family:var(--display);font-size:26px;font-weight:700;color:var(--lime);margin-bottom:10px;}
-  .stack-name{font-size:13px;font-weight:600;}
-
-  /* PROJECTS */
-  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .proj-card{
-    background:var(--card);border:1px solid var(--line);border-radius:18px;
-    padding:30px 26px;display:block;transition:transform .2s ease, border-color .2s ease;
-    position:relative;overflow:hidden;
-  }
-  .proj-card:hover{transform:translateY(-6px);border-color:var(--lime);}
-  .proj-card::after{
-    content:'↗';position:absolute;top:24px;right:24px;font-size:18px;color:var(--text-dim);
-    transition:color .2s;
-  }
-  .proj-card:hover::after{color:var(--lime);}
-  .proj-tag{font-family:var(--mono);font-size:11px;color:var(--lime);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;}
-  .proj-card h4{font-family:var(--display);font-weight:700;font-size:22px;margin-bottom:10px;}
-  .proj-card p{font-size:14px;color:var(--text-dim);margin-bottom:16px;}
-  .proj-tags{display:flex;gap:6px;flex-wrap:wrap;}
-  .proj-tags span{font-family:var(--mono);font-size:11px;color:#CFCFC9;background:rgba(255,255,255,0.06);padding:4px 9px;border-radius:14px;}
-
-  /* CONTACT */
-  footer{padding:90px 0 60px;text-align:center;}
-  footer .section-label{justify-content:center;display:flex;}
-  footer h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,6vw,52px);margin-bottom:18px;}
-  footer p{color:var(--text-dim);margin-bottom:34px;}
-  .contact-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
-  .icon-btn{
-    width:52px;height:52px;border-radius:50%;border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;font-size:20px;
-    transition:border-color .2s, color .2s, transform .2s;
-  }
-  .icon-btn:hover{border-color:var(--lime);color:var(--lime);transform:translateY(-3px);}
-  .foot-note{margin-top:60px;font-family:var(--mono);font-size:12px;color:var(--text-dim);}
-
-  @media (max-width:760px){
-    .about-grid{grid-template-columns:1fr;}
-    .stack-grid{grid-template-columns:repeat(2,1fr);}
-    .projects-grid{
-      grid-template-columns:none;
-      display:flex;
-      overflow-x:auto;
-      gap:16px;
-      padding-bottom:8px;
-      -webkit-overflow-scrolling:touch;
-      scroll-snap-type:x mandatory;
-    }
-    .proj-card{
-      flex:0 0 78%;
-      scroll-snap-align:start;
-    }
-    .navlinks{display:none;}
-    .stats-row{gap:30px;}
-  }
-
-  [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
-  [data-reveal].in{opacity:1;transform:translateY(0);}
+:root{--bg:#0A0A0A;--card:#161616;--line:rgba(255,255,255,.08);--lime:#D7FF3D;--text:#F2F2F0;--dim:#9A9A95;--display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+nav{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:72px;gap:16px}
+.logo{font-family:var(--display);font-weight:700;font-size:21px}.logo span,.accent{color:var(--lime)}
+.navlinks{display:flex;gap:26px;font-size:14px;font-weight:500}
+.navlinks a{color:var(--dim);transition:color .2s}.navlinks a:hover{color:var(--text)}
+.nav-r{display:flex;gap:10px;align-items:center}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--text);width:42px;height:42px;border-radius:50%;font-size:18px;cursor:pointer}
+.btn{font-family:var(--body);font-weight:600;font-size:14px;padding:11px 22px;border-radius:30px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:1px solid var(--line);background:none;color:var(--text);transition:transform .15s,border-color .2s,color .2s}
+.btn:hover{border-color:var(--lime);color:var(--lime)}
+.btn.pri{background:var(--lime);color:#0A0A0A;border-color:var(--lime)}.btn.pri:hover{transform:translateY(-2px);color:#0A0A0A}
+.btn.sm{padding:7px 14px;font-size:13px}
+a[href="LIVE_URL_HERE"],a[href="REPO_URL_HERE"]{display:none}
+header.hero{padding:90px 0 70px}
+.eyebrow{font-family:var(--mono);font-size:12px;color:var(--lime);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:7px;height:7px;background:var(--lime);border-radius:50%}
+h1.title{font-family:var(--display);font-weight:700;font-size:clamp(40px,7vw,72px);line-height:1.04}
+.subtitle{margin-top:24px;font-family:var(--display);font-weight:500;font-size:clamp(18px,2.4vw,24px);color:var(--dim);max-width:620px}
+.hero-cta{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap}
+.stats-row{display:flex;gap:46px;margin-top:60px;flex-wrap:wrap}
+.stat .num{font-family:var(--display);font-size:34px;font-weight:700;color:var(--lime)}
+.stat .lbl{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:4px}
+section{padding:90px 0;border-top:1px solid var(--line)}
+.label{font-family:var(--mono);font-size:12px;color:var(--lime);margin-bottom:14px}
+h2.st{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.5vw,42px);margin-bottom:38px}
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:start}
+.about-text p{font-size:16px;color:#CFCFC9;margin-bottom:16px;max-width:540px}
+.avatar{width:96px;height:96px;border-radius:50%;background:var(--card);border:1px solid var(--lime);object-fit:cover;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:32px;color:var(--lime);margin-bottom:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.card+.card{margin-top:14px}
+.card h4{font-family:var(--mono);font-size:12px;color:var(--lime);margin-bottom:8px}
+.card p{font-size:14px;color:var(--dim)}
+.timeline{padding-left:28px;border-left:1px solid var(--line)}
+.role{position:relative;padding-bottom:38px}.role:last-child{padding-bottom:0}
+.role::before{content:'';position:absolute;left:-34px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px var(--bg)}
+.role-date{font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:6px}
+.role-title{font-family:var(--display);font-weight:700;font-size:22px}
+.role-org{color:var(--lime);font-weight:600;font-size:15px}
+.role-desc{color:var(--dim);font-size:14px;margin-top:8px;max-width:560px}
+.edu{margin-top:44px}
+.stack-group{margin-bottom:22px}
+.stack-group h4{font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:10px;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:8px 16px;font-size:14px;font-weight:500;transition:border-color .2s}
+.chips span:hover{border-color:var(--lime)}
+.feat{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s}
+.pc:hover{border-color:var(--lime)}
+.thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#1d1d1d,#101010);position:relative;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:20px;color:rgba(215,255,61,.35)}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pb{padding:22px;display:flex;flex-direction:column;flex:1}
+.tag{font-family:var(--mono);font-size:11px;color:var(--lime);margin-bottom:8px}
+.pc h4{font-family:var(--display);font-weight:700;font-size:21px;margin-bottom:8px}
+.pc p{font-size:14px;color:var(--dim);margin-bottom:8px}
+.pc p b{color:var(--text);font-weight:600}
+.tech{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 16px}
+.tech span{font-family:var(--mono);font-size:11px;color:#CFCFC9;background:rgba(255,255,255,.06);padding:4px 9px;border-radius:14px}
+.acts{display:flex;gap:8px;margin-top:auto;flex-wrap:wrap}
+.more-bar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:48px 0 20px}
+.more-bar h3{font-family:var(--display);font-size:22px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tabs .btn{padding:7px 16px;font-size:13px}.tabs .btn.on{background:var(--lime);color:#0A0A0A;border-color:var(--lime)}
+.more{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.more .pc p{font-size:13px}
+.more .thumb{aspect-ratio:21/9;font-size:16px}
+.hint{display:none;font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:10px}
+footer{padding:90px 0 60px;text-align:center;border-top:1px solid var(--line)}
+footer .label{text-align:center}
+footer h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,6vw,52px);margin-bottom:18px}
+footer p{color:var(--dim);margin-bottom:30px}
+.contact-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.ib{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s}
+.ib:hover{border-color:var(--lime);color:var(--lime)}.ib svg{width:20px;height:20px;fill:currentColor}
+.foot{margin-top:50px;font-family:var(--mono);font-size:12px;color:var(--dim)}
+@media(max-width:760px){
+.menu{display:block}
+.navlinks{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;background:#0A0A0A;border-bottom:1px solid var(--line)}
+.navlinks.open{display:flex}
+.navlinks a{padding:16px 28px;border-top:1px solid var(--line);font-size:16px}
+nav .btn.pri{display:none}
+.about-grid,.feat{grid-template-columns:1fr}
+.more{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding-bottom:8px}
+.more .pc{flex:0 0 78%;scroll-snap-align:start}
+.hint{display:block}
+.stats-row{gap:30px}}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}*{transition:none!important}}
 </style>
+<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
-
-<nav>
-  <div class="wrap">
-    <div class="logo">Rubab <span>Fatima</span></div>
-    <div class="navlinks">
-      <a href="#about">About</a>
-      <a href="#resume">Resume</a>
-      <a href="#stack">Stack</a>
-      <a href="#projects">Projects</a>
-    </div>
-    <a href="#contact" class="btn-pill">Get in Touch</a>
+<nav><div class="wrap">
+  <a class="logo" href="#top">Rubab <span>Fatima</span></a>
+  <div class="navlinks" id="nl">
+    <a href="#about">About</a><a href="#resume">Experience</a><a href="#stack">Stack</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
   </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Open to Flutter & AI/ML Roles</div>
-    <h1 class="title">I build Flutter apps<br>& <span class="accent">AI/ML tools</span> that solve real problems.</h1>
-    <p class="subtitle">CS graduate turning ideas — from accessible learning tools to AI-powered agriculture platforms — into apps and models that work the way they're supposed to.</p>
-    <div class="hero-cta">
-      <a href="#projects" class="btn-pill">View Projects →</a>
-      <a href="#contact" class="btn-outline">Get in Touch</a>
-    </div>
-    <div class="stats-row">
-      <div class="stat"><div class="num">14+</div><div class="lbl">PROJECTS SHIPPED</div></div>
-      <div class="stat"><div class="num">6+</div><div class="lbl">AI/ML MODELS DEPLOYED</div></div>
-      <div class="stat"><div class="num">3</div><div class="lbl">INTERNSHIPS</div></div>
-      <div class="stat"><div class="num">2</div><div class="lbl">LANGUAGES SUPPORTED (EN/UR)</div></div>
-    </div>
+  <div class="nav-r">
+    <a href="Rubab_Fatima_CV.pdf" download class="btn sm">Download CV</a>
+    <a href="#contact" class="btn pri sm">Get in touch</a>
+    <button class="menu" id="mb" aria-label="Open menu" aria-expanded="false">☰</button>
   </div>
-</header>
+</div></nav>
 
-<section id="about">
-  <div class="wrap">
-    <div class="section-label">// About Me</div>
-    <h2 class="section-title">From classroom to <span class="accent">codebase.</span></h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I'm a recent Computer Science graduate from Fatima Jinnah Women University, Rawalpindi, with a focus that spans two things I genuinely enjoy — building Flutter apps that feel right in someone's hands, and training ML/DL models that actually hold up outside a notebook. I like problems that don't have a clean textbook answer: usability, accessibility, and how a prediction or a UI actually performs once real people touch it.</p>
-        <p>I've since picked up internship and training experience across Flutter development, data analysis, and applied AI/ML — including a hackathon-selected agricultural AI platform — and I'm currently looking for the next role where I can keep building things that are actually used, not just demoed.</p>
-      </div>
-      <div>
-        <div class="about-card"><h4>Based In</h4><p>Rawalpindi, Pakistan</p></div>
-        <div class="about-card"><h4>Focus</h4><p>Flutter Development · AI/ML & Data Science</p></div>
-      </div>
+<header class="hero" id="top"><div class="wrap">
+  <div class="eyebrow">Open to Flutter & AI/ML roles</div>
+  <h1 class="title">I build Flutter apps<br>& <span class="accent">AI/ML tools</span> that solve real problems.</h1>
+  <p class="subtitle">CS graduate turning ideas — from accessible learning tools to AI-powered agriculture platforms — into apps and models that work the way they're supposed to.</p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn pri">View projects</a>
+    <a href="Rubab_Fatima_CV.pdf" download class="btn">Download CV</a>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><div class="num">99.04%</div><div class="lbl">MNIST ACCURACY</div></div>
+    <div class="stat"><div class="num">38</div><div class="lbl">DISEASE CLASSES DETECTED</div></div>
+    <div class="stat"><div class="num">3</div><div class="lbl">INTERNSHIPS</div></div>
+    <div class="stat"><div class="num">1</div><div class="lbl">PACKAGE ON PYPI</div></div>
+  </div>
+</div></header>
+
+<section id="about"><div class="wrap">
+  <div class="label">About</div>
+  <h2 class="st">From classroom to <span class="accent">codebase.</span></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="avatar" aria-hidden="true">RF</div>
+      <p>I'm a recent Computer Science graduate from Fatima Jinnah Women University, Rawalpindi, with a focus that spans two things I genuinely enjoy — building Flutter apps that feel right in someone's hands, and training ML/DL models that actually hold up outside a notebook. I like problems that don't have a clean textbook answer: usability, accessibility, and how a prediction or a UI actually performs once real people touch it.</p>
+      <p>I've picked up internship and training experience across Flutter development, data analysis, and applied AI/ML — including a hackathon-selected agricultural AI platform — and I'm looking for the next role where I can keep building things that are actually used, not just demoed.</p>
+    </div>
+    <div>
+      <div class="card"><h4>Based in</h4><p>Rawalpindi, Pakistan</p></div>
+      <div class="card"><h4>Focus</h4><p>Flutter development · AI/ML & data science</p></div>
+      <div class="card"><h4>Education</h4><p><b style="color:var(--text)">BS Computer Science</b><br>Fatima Jinnah Women University, Rawalpindi<br>CGPA 3.81 / 4.00 · Graduated 2026</p></div>
     </div>
   </div>
-</section>
+</div></section>
 
-<section id="resume">
-  <div class="wrap">
-    <div class="section-label">// Resume</div>
-    <h2 class="section-title">Roles & <span class="accent">Experience</span></h2>
-    <div class="timeline">
-      <div class="role" data-reveal>
-        <div class="role-date">3 MONTHS</div>
-        <div class="role-title">AI/ML/DL Training Program</div>
-        <div class="role-org">Corvit (sponsored by NAVTTC)</div>
-        <div class="role-desc">Completed a structured, hands-on training program covering data visualization, statistics, NumPy/Pandas, OOP, and core ML fundamentals — linear & logistic regression, clustering.</div>
-      </div>
-      <div class="role" data-reveal>
-        <div class="role-date">SEP 2025 — DEC 2025</div>
-        <div class="role-title">Flutter Development Internship</div>
-        <div class="role-org">NerdFlow</div>
-        <div class="role-desc">Worked on mobile app features and UI implementation using Flutter.</div>
-      </div>
-      <div class="role" data-reveal>
-        <div class="role-date">JUL 2025 — AUG 2025</div>
-        <div class="role-title">Data Analysis Internship</div>
-        <div class="role-org">ITSolera</div>
-        <div class="role-desc">Worked on data analysis tasks, building familiarity with structured data workflows.</div>
-      </div>
-      <div class="role" data-reveal>
-        <div class="role-date">JUL 2025 — AUG 2025</div>
-        <div class="role-title">Flutter Development Internship</div>
-        <div class="role-org">The Nixus</div>
-        <div class="role-desc">Built and contributed to Flutter mobile app features during the internship period.</div>
-      </div>
+<section id="resume"><div class="wrap">
+  <div class="label">Experience</div>
+  <h2 class="st">Roles & <span class="accent">training</span></h2>
+  <div class="timeline">
+    <div class="role rv">
+      <div class="role-date">29 JUN 2026 — 29 SEP 2026</div>
+      <div class="role-title">AI/ML/DL Training Program</div><div class="role-org">Corvit (sponsored by NAVTTC)</div>
+      <div class="role-desc">Hands-on training in data visualization, statistics, NumPy/Pandas, OOP, and core ML — linear & logistic regression, clustering.</div>
+    </div>
+    <div class="role rv">
+      <div class="role-date">SEP 2025 — DEC 2025</div>
+      <div class="role-title">Flutter Development Intern</div><div class="role-org">NerdFlow</div>
+      <div class="role-desc">Worked on mobile app features and UI implementation using Flutter.</div>
+    </div>
+    <div class="role rv">
+      <div class="role-date">JUL 2025 — AUG 2025 (concurrent)</div>
+      <div class="role-title">Data Analysis Intern</div><div class="role-org">ITSolera</div>
+      <div class="role-desc">Worked on data analysis tasks, building familiarity with structured data workflows.</div>
+    </div>
+    <div class="role rv">
+      <div class="role-date">JUL 2025 — AUG 2025 (concurrent)</div>
+      <div class="role-title">Flutter Development Intern</div><div class="role-org">The Nixus</div>
+      <div class="role-desc">Built and contributed to Flutter mobile app features during the internship period.</div>
     </div>
   </div>
-</section>
+</div></section>
 
-<section id="stack">
-  <div class="wrap">
-    <div class="section-label">// Tech Stack</div>
-    <h2 class="section-title">Tools I <span class="accent">work with.</span></h2>
-    <div class="stack-grid">
-      <div class="stack-card"><div class="stack-icon">Fl</div><div class="stack-name">Flutter</div></div>
-      <div class="stack-card"><div class="stack-icon">🔥</div><div class="stack-name">Firebase</div></div>
-      <div class="stack-card"><div class="stack-icon">JS</div><div class="stack-name">Node.js</div></div>
-      <div class="stack-card"><div class="stack-icon">⛁</div><div class="stack-name">PostgreSQL</div></div>
-      <div class="stack-card"><div class="stack-icon">Py</div><div class="stack-name">Python</div></div>
-      <div class="stack-card"><div class="stack-icon">TF</div><div class="stack-name">TensorFlow/Keras</div></div>
-      <div class="stack-card"><div class="stack-icon">St</div><div class="stack-name">Streamlit</div></div>
-      <div class="stack-card"><div class="stack-icon">Dj</div><div class="stack-name">Django REST</div></div>
-      <div class="stack-card"><div class="stack-icon">Pd</div><div class="stack-name">Pandas / NumPy</div></div>
-      <div class="stack-card"><div class="stack-icon">✦</div><div class="stack-name">Gemini API / RAG</div></div>
-      <div class="stack-card"><div class="stack-icon">Gh</div><div class="stack-name">Git / GitHub</div></div>
-    </div>
+<section id="stack"><div class="wrap">
+  <div class="label">Tech stack</div>
+  <h2 class="st">Tools I <span class="accent">work with</span></h2>
+  <div class="stack-group"><h4>Mobile</h4><div class="chips"><span>Flutter</span><span>Flame Engine</span><span>Firebase</span></div></div>
+  <div class="stack-group"><h4>AI / ML</h4><div class="chips"><span>Python</span><span>TensorFlow / Keras</span><span>scikit-learn</span><span>Pandas / NumPy</span><span>Streamlit</span><span>Gemini API / RAG</span></div></div>
+  <div class="stack-group"><h4>Web & backend</h4><div class="chips"><span>React</span><span>TypeScript</span><span>Node.js</span><span>Django REST</span><span>PostgreSQL</span></div></div>
+  <div class="stack-group"><h4>Tools & cloud</h4><div class="chips"><span>Git / GitHub</span><span>Alibaba Cloud</span><span>PyInstaller</span></div></div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <div class="label">Projects</div>
+  <h2 class="st">Things I've <span class="accent">built</span></h2>
+  <div class="feat" id="feat"></div>
+  <div class="more-bar">
+    <h3>More projects</h3>
+    <div class="tabs" id="tabs"></div>
   </div>
-</section>
+  <div class="hint">Swipe to see more →</div>
+  <div class="more" id="more"></div>
+  <noscript><p style="color:var(--dim)">Enable JavaScript to see projects, or visit <a class="accent" href="https://github.com/RubabFatima504">my GitHub</a>.</p></noscript>
+</div></section>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="section-label">// Portfolio</div>
-    <h2 class="section-title">Things I've <span class="accent">built.</span></h2>
-    <div class="projects-grid">
-
-      <a href="https://github.com/RubabFatima504/HopeLearn-App" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">Flagship Project</div>
-        <h4>HopeLearn</h4>
-        <p>Bilingual (EN/UR) AI-assisted learning app for children with Intellectual Developmental Delays — dashboards, Flame-engine games, and a Decision-Making module.</p>
-        <div class="proj-tags"><span>Flutter</span><span>Flame</span><span>Firebase</span></div>
-      </a>
-
-      <a href="https://github.com/RubabFatima504" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">Hackathon · Selected Project</div>
-        <h4>HarvestGuard</h4>
-        <p>AI-powered agricultural spoilage and market decision-support platform, selected for the Alibaba Cloud AI Hackathon Pakistan 2026. RAG knowledge base plus five structured datasets.</p>
-        <div class="proj-tags"><span>React</span><span>TypeScript</span><span>RAG</span></div>
-      </a>
-
-      <a href="https://github.com/RubabFatima504/crop_disease_detection" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">AI / ML</div>
-        <h4>Crop Disease Detection</h4>
-        <p>Streamlit app that classifies plant leaf images into 38 disease/healthy categories across 14 crops, using a custom CNN and a fine-tuned MobileNetV2.</p>
-        <div class="proj-tags"><span>TensorFlow</span><span>Streamlit</span><span>CNN</span></div>
-      </a>
-
-      <a href="https://github.com/RubabFatima504/DigitVision" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">AI / ML</div>
-        <h4>DigitVision</h4>
-        <p>CNN-based MNIST digit classifier (99.04% accuracy) deployed on Streamlit with a freehand draw-a-digit canvas and live confidence charts.</p>
-        <div class="proj-tags"><span>Keras</span><span>Streamlit</span><span>CNN</span></div>
-      </a>
-
-      <a href="https://github.com/RubabFatima504/Bitcoin_trend_prediction" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">AI / ML</div>
-        <h4>Bitcoin Trend Prediction</h4>
-        <p>A Streamlit application that predicts Bitcoin price trends using trained ML models on historical market data.</p>
-        <div class="proj-tags"><span>Python</span><span>Streamlit</span></div>
-      </a>
-
-      <a href="https://github.com/RubabFatima504" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">AI / ML</div>
-        <h4>Sentiment Analysis</h4>
-        <p>Logistic regression sentiment classifier built and evaluated on Kaggle, achieving 90.85% accuracy on text data.</p>
-        <div class="proj-tags"><span>Python</span><span>scikit-learn</span></div>
-      </a>
-
-      <a href="https://github.com/RubabFatima504/shoe_size_prediction" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">AI / ML</div>
-        <h4>Shoe Size Predictor</h4>
-        <p>Ridge Regression model deployed to Streamlit Community Cloud, predicting shoe size from user input features.</p>
-        <div class="proj-tags"><span>Python</span><span>Streamlit</span></div>
-      </a>
-
-      <a href="https://github.com/RubabFatima504/crm_ui" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">Web App</div>
-        <h4>CRM UI</h4>
-        <p>A CRM interface project — front-end built to explore clean, functional dashboard UI patterns.</p>
-        <div class="proj-tags"><span>UI/UX</span></div>
-      </a>
-
-      <a href="https://github.com/RubabFatima504/BuiltMemoryGame" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">Game</div>
-        <h4>Remember Pattern</h4>
-        <p>A memory-matching mini-game built on the Flutter Flame engine — pattern sequencing logic and level-based scoring.</p>
-        <div class="proj-tags"><span>Flutter</span><span>Flame Engine</span></div>
-      </a>
-
-      <a href="https://github.com/RubabFatima504/NumberLearningGame" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">Game</div>
-        <h4>Number Learning Game</h4>
-        <p>A number-learning game on the Flame engine with drag-and-drop interactions and progressive difficulty levels.</p>
-        <div class="proj-tags"><span>Flutter</span><span>Flame Engine</span></div>
-      </a>
-
-      <a href="https://github.com/RubabFatima504" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">Generative AI</div>
-        <h4>Dream-to-Art Generator</h4>
-        <p>A generative AI application using the Google Gemini API to convert text descriptions into visual art.</p>
-        <div class="proj-tags"><span>Gemini API</span><span>Python</span></div>
-      </a>
-
-      <a href="https://github.com/RubabFatima504" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">AI / ML</div>
-        <h4>Customer Segmentation</h4>
-        <p>Applied KMeans clustering to segment customers based on behavioral and demographic data.</p>
-        <div class="proj-tags"><span>Python</span><span>KMeans</span></div>
-      </a>
-
-      <a href="https://pypi.org/project/pyforge-patterns/" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">Python Package · PyPI</div>
-        <h4>pyforge-patterns</h4>
-        <p>A published Python package implementing common design patterns, publicly available and installable via pip.</p>
-        <div class="proj-tags"><span>Python</span><span>PyPI</span></div>
-      </a>
-
-      <a href="https://github.com/RubabFatima504" target="_blank" class="proj-card" data-reveal>
-        <div class="proj-tag">Desktop Tool</div>
-        <h4>QR Code Generator</h4>
-        <p>A desktop QR code generator built and packaged with PyInstaller for standalone distribution.</p>
-        <div class="proj-tags"><span>Python</span><span>PyInstaller</span></div>
-      </a>
-
-    </div>
+<footer id="contact"><div class="wrap">
+  <div class="label">Contact</div>
+  <h2>Let's build <span class="accent">something.</span></h2>
+  <p>Open to Flutter and AI/ML roles. The fastest way to reach me is email.</p>
+  <div class="hero-cta" style="justify-content:center;margin:0 0 28px">
+    <a href="mailto:rubabfatiam01@gmail.com" class="btn pri">Email me</a>
+    <a href="Rubab_Fatima_CV.pdf" download class="btn">Download CV</a>
   </div>
-</section>
-
-<footer id="contact">
-  <div class="wrap">
-    <div class="section-label">// Contact</div>
-    <h2>Let's build <span class="accent" style="color:var(--lime);">something.</span></h2>
-    <p>Open to Discussion</p>
-    <div class="contact-row">
-      <a href="https://github.com/RubabFatima504" target="_blank" class="icon-btn" title="GitHub">⌥</a>
-      <a href="https://www.linkedin.com/in/rubab-fatima2005/" target="_blank" class="icon-btn" title="LinkedIn">in</a>
-      <a href="https://wa.me/923038194005" target="_blank" class="icon-btn" title="WhatsApp">☏</a>
-    </div>
-    <div class="foot-note">+92 303 8194005 · rubabfatiam01@gmail.com</div>
-    <div class="foot-note" style="margin-top:8px;">Rawalpindi, Pakistan · © 2026 Rubab Fatima</div>
+  <div class="contact-row">
+    <a class="ib" href="https://github.com/RubabFatima504" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+    <a class="ib" href="https://www.linkedin.com/in/rubab-fatima2005/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11.5H3zM9.5 9.75h3.8v1.6h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.75 2.63 4.75 6.05v5.9h-4v-5.23c0-1.25-.02-2.85-1.74-2.85-1.74 0-2 1.36-2 2.76v5.32h-4z"/></svg></a>
+    <a class="ib" href="https://wa.me/923038194005" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.1.1.6-.1 1.1z"/></svg></a>
   </div>
-</footer>
+  <div class="foot">+92 303 8194005 · rubabfatiam01@gmail.com</div>
+  <div class="foot" style="margin-top:8px">Rawalpindi, Pakistan · © 2026 Rubab Fatima</div>
+</div></footer>
 
 <script>
-  const els = document.querySelectorAll('[data-reveal]');
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
-  }, {threshold:0.15});
-  els.forEach(el=>obs.observe(el));
+/* Edit here. Replace LIVE_URL_HERE / REPO_URL_HERE with real links — buttons with placeholders stay hidden.
+   Add screenshots as img/<id>.png (card falls back to a plain thumbnail until then). */
+const GH="https://github.com/RubabFatima504/";
+const FEATURED=[
+ {id:"hopelearn",tag:"Flagship · Flutter mobile app",name:"HopeLearn",problem:"Children with intellectual developmental delays lack accessible, bilingual learning tools.",built:"Bilingual (EN/UR) AI-assisted app with dashboards, Flame-engine games and a Decision-Making module.",result:"Final-year project, built as a working Flutter + Firebase mobile app.",tech:["Flutter","Flame","Firebase"],live:"LIVE_URL_HERE",code:GH+"HopeLearn-App"},
+ {id:"harvestguard",tag:"Hackathon · Selected",name:"HarvestGuard",problem:"Farmers lose produce to spoilage and sell without market insight.",built:"AI spoilage and market decision-support platform with a RAG knowledge base and five structured datasets.",result:"Selected for Alibaba Cloud AI Hackathon Pakistan 2026.",tech:["React","TypeScript","RAG"],live:"https://harvestguard-ai.netlify.app/",code:"https://github.com/RubabFatima504/harvestguard-ai"},
+ {id:"crop",tag:"AI / ML",name:"Crop Disease Detection",problem:"Plant diseases are hard to identify early without an expert.",built:"Streamlit app classifying leaf images using a custom CNN and a fine-tuned MobileNetV2.",result:"38 disease/healthy classes across 14 crops.",tech:["TensorFlow","Streamlit","CNN"],live:"https://cropdiseasedetection-rubabfatima.streamlit.app/",code:GH+"crop_disease_detection"},
+ {id:"pyforge",tag:"Python package · PyPI",name:"pyforge-patterns",problem:"Printing shapes in the console means rewriting the same loops every time.",built:"A lightweight package that generates ASCII art patterns (diamond, pyramid, triangle, rectangle, circle, hourglass) with custom characters.",result:"v0.1.1 published on PyPI, installable with pip install pyforge-patterns.",tech:["Python","PyPI"],live:"https://pypi.org/project/pyforge-patterns/",liveLabel:"View on PyPI",code:"REPO_URL_HERE"}
+];
+const MORE=[
+ {id:"digit",cat:"AI/ML",name:"DigitVision",d:"CNN MNIST classifier (99.04% accuracy) with a draw-a-digit canvas and live confidence charts.",tech:["Keras","Streamlit"],live:"https://digitvision-cnnmodel.streamlit.app/",code:GH+"DigitVision"},
+ {id:"bitcoin",cat:"AI/ML",name:"Bitcoin Trend Prediction",d:"Streamlit app predicting Bitcoin price trends from historical market data.",tech:["Python","Streamlit"],live:"https://bitcointrendprediction-rubabfatima.streamlit.app/",code:GH+"Bitcoin_trend_prediction"},
+ {id:"shoe",cat:"AI/ML",name:"Shoe Size Predictor",d:"Ridge Regression model deployed on Streamlit Community Cloud.",tech:["Python","Streamlit"],live:"https://shoesizeprediction.streamlit.app/",code:GH+"shoe_size_prediction"},
+ {id:"pattern",cat:"Games",name:"Remember Pattern",d:"Memory-matching game on Flame with pattern sequencing and level-based scoring.",tech:["Flutter","Flame"],live:"LIVE_URL_HERE",code:GH+"BuiltMemoryGame"},
+ {id:"number",cat:"Games",name:"Number Learning Game",d:"Drag-and-drop number game on Flame with progressive difficulty.",tech:["Flutter","Flame"],live:"LIVE_URL_HERE",code:GH+"NumberLearningGame"},
+ {id:"crm",cat:"Web",name:"CRM UI",d:"Front-end exploring clean, functional dashboard UI patterns.",tech:["UI/UX"],live:"LIVE_URL_HERE",code:GH+"crm_ui"}
+];
+const POS={harvestguard:"left top",digit:"left top",pattern:"right center",number:"right center"};
+const th=p=>`<div class="thumb">${p.name}<img src="img/${p.id}.png" alt="${p.name} screenshot" loading="lazy" style="${p.id==='pyforge'?'object-fit:contain;background:#eef0ff':'object-position:'+(POS[p.id]||'center')}" onerror="this.remove()"></div>`;
+const acts=p=>`<div class="acts"><a class="btn pri sm" href="${p.live}" target="_blank" rel="noopener">${p.liveLabel||"Live demo"}</a><a class="btn sm" href="${p.code}" target="_blank" rel="noopener">Code</a></div>`;
+const tech=p=>`<div class="tech">${p.tech.map(t=>`<span>${t}</span>`).join("")}</div>`;
+document.getElementById("feat").innerHTML=FEATURED.map(p=>`<article class="pc rv">${th(p)}<div class="pb"><div class="tag">${p.tag}</div><h4>${p.name}</h4><p><b>Problem:</b> ${p.problem}</p><p><b>Built:</b> ${p.built}</p><p><b>Result:</b> ${p.result}</p>${tech(p)}${acts(p)}</div></article>`).join("");
+const more=document.getElementById("more"),tabs=document.getElementById("tabs");
+function draw(c){more.innerHTML=MORE.filter(p=>c==="All"||p.cat===c).map(p=>`<article class="pc">${th(p)}<div class="pb"><h4 style="font-size:18px">${p.name}</h4><p>${p.d}</p>${tech(p)}${acts(p)}</div></article>`).join("");
+ tabs.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.c===c))}
+tabs.innerHTML=["All","AI/ML","Games","Web"].map(c=>`<button class="btn" data-c="${c}">${c}</button>`).join("");
+tabs.onclick=e=>{if(e.target.dataset.c)draw(e.target.dataset.c)};draw("All");
+const nl=document.getElementById("nl"),mb=document.getElementById("mb");
+mb.onclick=()=>{const o=nl.classList.toggle("open");mb.setAttribute("aria-expanded",o);mb.textContent=o?"✕":"☰"};
+nl.onclick=e=>{if(e.target.tagName==="A"){nl.classList.remove("open");mb.textContent="☰"}};
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in")}),{threshold:.1});
+document.querySelectorAll(".rv").forEach(el=>obs.observe(el));
 </script>
-
 </body>
 </html>
