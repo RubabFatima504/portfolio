@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rubab Fatima — Flutter & AI/ML Developer</title>
-<meta name="description" content="Rubab Fatima: CS graduate building Flutter apps and AI/ML tools. HopeLearn, HarvestGuard, Crop Disease Detection and more.">
-<meta property="og:title" content="Rubab Fatima — Flutter & AI/ML Developer">
-<meta property="og:description" content="Flutter apps and AI/ML tools that solve real problems.">
+<title>Rubab Fatima | Flutter & AI/ML Developer</title>
+<meta name="description" content="CS graduate building Flutter apps and AI/ML tools. Projects include HopeLearn, HarvestGuard (Alibaba Cloud AI Hackathon 2026) and Crop Disease Detection.">
+<meta property="og:title" content="Rubab Fatima | Flutter & AI/ML Developer">
+<meta property="og:description" content="CS graduate building Flutter apps and AI/ML tools. Projects include HopeLearn, HarvestGuard (Alibaba Cloud AI Hackathon 2026) and Crop Disease Detection.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="img/og.png">
+<meta property="og:url" content="https://rubabfatima504.github.io/portfolio/">
+<meta property="og:image" content="https://rubabfatima504.github.io/portfolio/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230A0A0A'/><text x='50' y='68' font-size='56' font-weight='700' text-anchor='middle' fill='%23D7FF3D' font-family='sans-serif'>RF</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,10 +36,10 @@ nav .wrap{display:flex;justify-content:space-between;align-items:center;height:7
 .btn.sm{padding:7px 14px;font-size:13px}
 a[href="LIVE_URL_HERE"],a[href="REPO_URL_HERE"]{display:none}
 header.hero{padding:90px 0 70px}
-.eyebrow{font-family:var(--mono);font-size:12px;color:var(--lime);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--lime);margin-bottom:20px;display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:'';width:7px;height:7px;background:var(--lime);border-radius:50%}
-h1.title{font-family:var(--display);font-weight:700;font-size:clamp(40px,7vw,72px);line-height:1.04}
-.subtitle{margin-top:24px;font-family:var(--display);font-weight:500;font-size:clamp(18px,2.4vw,24px);color:var(--dim);max-width:620px}
+h1.title{font-family:var(--display);font-weight:700;font-size:clamp(34px,5.4vw,58px);line-height:1.1;max-width:900px}
+.subtitle{margin-top:24px;font-family:var(--display);font-weight:500;font-size:clamp(18px,2.4vw,24px);color:var(--dim);max-width:700px;font-size:clamp(16px,2vw,20px)}
 .hero-cta{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap}
 .stats-row{display:flex;gap:46px;margin-top:60px;flex-wrap:wrap}
 .stat .num{font-family:var(--display);font-size:34px;font-weight:700;color:var(--lime)}
@@ -124,17 +126,17 @@ nav .btn.pri{display:none}
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
-  <div class="eyebrow">Open to Flutter & AI/ML roles</div>
-  <h1 class="title">I build Flutter apps<br>& <span class="accent">AI/ML tools</span> that solve real problems.</h1>
-  <p class="subtitle">CS graduate turning ideas — from accessible learning tools to AI-powered agriculture platforms — into apps and models that work the way they're supposed to.</p>
+  <div class="eyebrow">OPEN TO FLUTTER &amp; AI/ML ROLES</div>
+  <h1 class="title">I build practical apps and <span class="accent">AI/ML solutions</span> that turn real-world problems into usable technology.</h1>
+  <p class="subtitle">Computer Science graduate focused on Flutter development and applied AI/ML, with hands-on experience in data analysis, machine learning, and deep learning, building cross-platform apps and deploying models as live applications.</p>
   <div class="hero-cta">
     <a href="#projects" class="btn pri">View projects</a>
     <a href="Rubab_Fatima_CV.pdf" download class="btn">Download CV</a>
   </div>
   <div class="stats-row">
-    <div class="stat"><div class="num">99.04%</div><div class="lbl">MNIST ACCURACY</div></div>
-    <div class="stat"><div class="num">38</div><div class="lbl">DISEASE CLASSES DETECTED</div></div>
+    <div class="stat"><div class="num">5</div><div class="lbl">LIVE APPS</div></div>
     <div class="stat"><div class="num">3</div><div class="lbl">INTERNSHIPS</div></div>
+    <div class="stat"><div class="num">1</div><div class="lbl">HACKATHON SELECTION</div></div>
     <div class="stat"><div class="num">1</div><div class="lbl">PACKAGE ON PYPI</div></div>
   </div>
 </div></header>
@@ -210,7 +212,7 @@ nav .btn.pri{display:none}
   <h2>Let's build <span class="accent">something.</span></h2>
   <p>Open to Flutter and AI/ML roles. The fastest way to reach me is email.</p>
   <div class="hero-cta" style="justify-content:center;margin:0 0 28px">
-    <a href="mailto:rubabfatiam01@gmail.com" class="btn pri">Email me</a>
+    <a href="mailto:rubabfatiam01@gmail.com?subject=Opportunity%20for%20Rubab%20Fatima" class="btn pri" id="mailbtn">Email me</a>
     <a href="Rubab_Fatima_CV.pdf" download class="btn">Download CV</a>
   </div>
   <div class="contact-row">
@@ -250,6 +252,12 @@ function draw(c){more.innerHTML=MORE.filter(p=>c==="All"||p.cat===c).map(p=>`<ar
  tabs.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.c===c))}
 tabs.innerHTML=["All","AI/ML","Games","Web"].map(c=>`<button class="btn" data-c="${c}">${c}</button>`).join("");
 tabs.onclick=e=>{if(e.target.dataset.c)draw(e.target.dataset.c)};draw("All");
+const mb2=document.getElementById("mailbtn");
+mb2.addEventListener("click",e=>{
+ if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent))return; /* phones: open mail app via mailto */
+ e.preventDefault();
+ window.open("https://mail.google.com/mail/?view=cm&fs=1&to=rubabfatiam01@gmail.com&su="+encodeURIComponent("Opportunity for Rubab Fatima"),"_blank","noopener");
+});
 const nl=document.getElementById("nl"),mb=document.getElementById("mb");
 mb.onclick=()=>{const o=nl.classList.toggle("open");mb.setAttribute("aria-expanded",o);mb.textContent=o?"✕":"☰"};
 nl.onclick=e=>{if(e.target.tagName==="A"){nl.classList.remove("open");mb.textContent="☰"}};
